@@ -35,6 +35,8 @@ namespace Bassem.Scripts.Gun
 
         [SerializeField]
         private Vector3 _recoileDirection;
+        [SerializeField]
+        private Vector3 _recoileAngle;
 
         [SerializeField]
         private Transform _gunMesh;
@@ -112,11 +114,21 @@ namespace Bassem.Scripts.Gun
             _fireSound.Play();
             _bolt.CycleBolt(_fireRate);
 
+
+
             // if (_recenterTweener.active)
             // {
                 
             // }
-            // _recoileTweener = _gunMesh.DOLocalMove(_recoileDirection * 0.01f, _fireRate);
+            _recoileTweener = _gunMesh.DOLocalMove(_recoileDirection * 0.01f, _fireRate).OnComplete(() =>
+            {
+                _gunMesh.DOLocalMove(Vector3.zero, _fireRate / 2.0f);
+            });
+
+            _gunMesh.DOLocalRotate(_recoileAngle.normalized, _fireRate).OnComplete(() =>
+            {
+                _gunMesh.DOLocalRotate(Vector3.zero, _fireRate / 2.0f);
+            });
         }
 
         private void TestSelect(GrabInteractor interactor)

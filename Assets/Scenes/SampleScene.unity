@@ -6095,8 +6095,9 @@ MonoBehaviour:
   _fireSound: {fileID: 1777942284}
   _magazine: {fileID: 1527144316}
   _bolt: {fileID: 1315381726}
-  _recoileDirection: {x: 1, y: 0.5, z: 0}
-  _gunMesh: {fileID: 2544884371821043835}
+  _recoileDirection: {x: 0, y: 0, z: -1}
+  _recoileAngle: {x: -1, y: 0.5, z: 0}
+  _gunMesh: {fileID: 2544884371821043837}
 --- !u!114 &857196278
 MonoBehaviour:
   m_ObjectHideFlags: 0
